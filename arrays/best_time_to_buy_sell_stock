@@ -1,0 +1,72 @@
+# Solution 1
+class Solution(object):
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        max_profit = 0
+        l = 0
+        r = 1
+
+        while (r < len(prices)):
+            current_profit = prices[r] - prices[l]
+
+            max_profit = max(current_profit, max_profit)
+
+            if current_profit < 0:
+                l = r
+            r += 1
+
+        return max_profit
+
+
+# Solution 2
+class Solution2(object):
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        max_profit = 0
+        l = 0
+        r = 1
+
+        while (r < len(prices)):
+            if prices[l] >= prices[r]:
+                l = r
+            else:
+                current_profit = prices[r] - prices[l]
+                max_profit = max(current_profit, max_profit)
+
+            r += 1
+
+        return max_profit
+
+# Sol 3 - most efficient
+class Solution3(object):
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        class Solution(object):
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        min_price = float('inf')
+        max_profit = 0
+
+        for price in prices:
+            if price < min_price:
+                min_price = price
+
+            profit = price - min_price
+            
+            if profit > max_profit:
+                max_profit = profit
+        
+        return max_profit
+        
